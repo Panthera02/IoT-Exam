@@ -18,6 +18,7 @@ def on_message(client1, userdata, message):
     # Part B
     sense.clear(255,0,0)
     sleep(2)
+    sense.clear()
 
 client.on_message = on_message
 

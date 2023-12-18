@@ -9,9 +9,11 @@ client = mqtt.Client()
 client.connect("broker.emqx.io", 1883, 60)
 client.loop_start()
 
-data = '''{"time": "%s", "city": "Madrid", "temperature": %d}'''%(datetime.now().strftime("%H:%M:%S"), sense.get_temperature())
-
-client.publish("/ETSIDI/666", data)
+while True:
+    temp = sense.get_temperature()
+    data = '''{"time": "%s", "city": "Madrid", "temperature": %f}'''%(datetime.now().strftime("%H:%M:%S"), temp)
+    if temp < 12:
+        client.publish("/ETSIDI/666", data)
 
 client.disconnect()
 client.loop_stop()

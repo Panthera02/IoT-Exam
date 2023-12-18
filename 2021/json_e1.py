@@ -10,7 +10,7 @@ while True:
         {
             "time": "%s",
             "city": "Madrid",
-            "temperature": %d
+            "temperature": %f
         }
         """%(datetime.now().strftime("%H:%M:%S"), sense.get_temperature())
     )
